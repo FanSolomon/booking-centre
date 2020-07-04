@@ -16,7 +16,58 @@ import {
   QList,
   QItem,
   QItemSection,
-  QItemLabel
+  QItemLabel,
+
+  QTabs,
+  QTab,
+  QRouteTab,
+
+  QSpace,
+
+  QBtnDropdown,
+
+  QImg,
+
+  QParallax,
+
+  QTimeline,
+  QTimelineEntry,
+
+  QCard,
+  QCardSection,
+  QCardActions,
+
+  QSeparator,
+
+  QChip,
+
+  QAvatar,
+
+  QMenu,
+  ClosePopup,
+
+  QCarousel,
+  QCarouselControl,
+  QCarouselSlide,
+
+  QBadge,
+
+  QBreadcrumbs,
+  QBreadcrumbsEl,
+
+  QInput,
+
+  QSplitter,
+
+  QPageScroller,
+
+  QFab,
+  QFabAction,
+
+  QPageSticky,
+
+  QDate,
+  QPopupProxy
 } from 'quasar'
 
 Vue.use(Quasar, {
@@ -34,7 +85,58 @@ Vue.use(Quasar, {
     QList,
     QItem,
     QItemSection,
-    QItemLabel
+    QItemLabel,
+
+    QTabs,
+    QTab,
+    QRouteTab,
+
+    QSpace,
+
+    QBtnDropdown,
+
+    QImg,
+
+    QParallax,
+
+    QTimeline,
+    QTimelineEntry,
+
+    QCard,
+    QCardSection,
+    QCardActions,
+
+    QSeparator,
+
+    QChip,
+
+    QAvatar,
+
+    QMenu,
+    ClosePopup,
+
+    QCarousel,
+    QCarouselControl,
+    QCarouselSlide,
+
+    QBadge,
+
+    QBreadcrumbs,
+    QBreadcrumbsEl,
+
+    QInput,
+
+    QSplitter,
+
+    QPageScroller,
+
+    QFab,
+    QFabAction,
+
+    QPageSticky,
+
+    QDate,
+    QPopupProxy
   },
   directives: {
   },

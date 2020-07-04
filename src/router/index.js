@@ -1,14 +1,26 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import MainPage from '../layouts/MainPage.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'MainPage',
+    component: MainPage,
+    children: [
+      {
+        path: '/',
+        name: 'Home',
+        component: () => import('../views/Home.vue')
+      },
+      {
+        path: '/rainbow6',
+        name: 'Rainbow6',
+        component: () => import('../views/Rainbow6.vue')
+      }
+    ]
   }
 ]
 
@@ -19,3 +31,8 @@ const router = new VueRouter({
 })
 
 export default router
+
+// const originalPush = VueRouter.prototype.push
+// VueRouter.prototype.push = function push (location) {
+//   return originalPush.call(this, location).catch(err => err)
+// }

@@ -1,6 +1,30 @@
 <template>
     <div class="header">
-        {{ userName }}
+      <q-header reveal style="background: #24292e;">
+        <q-toolbar style="color: #42b983; padding: 0;">
+          <q-input
+            :loading="loadingState"
+            dark dense standout borderless
+            v-model="text"
+            placeholder="search..."
+            input-class="text-left"
+            class="q-ml-md"
+          >
+            <template v-slot:append>
+              <q-icon v-if="text === ''" name="search" />
+              <q-icon v-else name="clear" class="cursor-pointer" @click="text = ''" />
+            </template>
+          </q-input>
+          <q-btn align="left" unelevated padding="sm" name="Home" to="/" exact class="q-ml-md"><b>Home</b></q-btn>
+          <q-btn align="left" unelevated padding="sm" name="Mess" to="/mess" exact ><b>Mess</b></q-btn>
+          <q-btn align="left" unelevated padding="sm" name="Rainbow6" to="/rainbow6" exact ><b>Rainbow6</b></q-btn>
+
+          <q-space />
+
+          <q-btn  align="left" unelevated icon="fab fa-github" @click="go_site('https://github.com/FanSolomon')"></q-btn>
+        </q-toolbar>
+      </q-header>
+
     </div>
 </template>
 
@@ -9,20 +33,21 @@ export default {
   name: 'Header',
   props: {
     userName: String
+  },
+  data () {
+    return {
+      text: '',
+      loadingState: false
+    }
+  },
+  methods: {
+    go_site (url) {
+      window.open(url)
+    }
   }
 }
 </script>
 
-<style>
-.header {
-    width: 100%;
-    height: 20px;
-    min-width: 400px;
-    padding: 16px;
-    font-size: 14px;
-    background: #24292e;
-    color: #42b983;
-    border-bottom: 1px solid #1f2d3d;
-    line-height: 1.5;
-}
+<style scoped>
+
 </style>
