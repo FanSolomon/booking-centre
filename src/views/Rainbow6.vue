@@ -1,5 +1,9 @@
 <template>
-    <div></div>
+    <div>
+      <q-page-container>
+        <q-page></q-page>
+      </q-page-container>
+    </div>
 </template>
 
 <script>

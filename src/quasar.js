@@ -67,7 +67,9 @@ import {
   QPageSticky,
 
   QDate,
-  QPopupProxy
+  QPopupProxy,
+
+  QLinearProgress
 } from 'quasar'
 
 Vue.use(Quasar, {
@@ -136,7 +138,9 @@ Vue.use(Quasar, {
     QPageSticky,
 
     QDate,
-    QPopupProxy
+    QPopupProxy,
+
+    QLinearProgress
   },
   directives: {
   },
