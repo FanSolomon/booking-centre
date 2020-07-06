@@ -19,6 +19,11 @@ const routes = [
         path: '/rainbow6',
         name: 'Rainbow6',
         component: () => import('../views/Rainbow6.vue')
+      },
+      {
+        path: '/booking',
+        name: 'Booking',
+        component: () => import('../views/Booking.vue')
       }
     ]
   }

@@ -2,7 +2,7 @@
     <div class="header">
       <q-header reveal style="background: #24292e;">
         <q-toolbar style="color: #42b983; padding: 0;">
-          <q-btn align="left" unelevated icon="fas fa-circle-notch" to="/" exact class="q-ml-md"></q-btn>
+          <q-btn align="left" unelevated icon="fas fa-circle-notch" to="/" exact class="q-ml-md" />
           <q-input
             :loading="loadingState"
             dark dense standout borderless
@@ -16,9 +16,9 @@
               <q-icon v-else name="clear" class="cursor-pointer" @click="text = ''" />
             </template>
           </q-input>
-          <q-btn align="left" unelevated padding="sm" name="Xdxx" to="/" exact class="q-ml-md"><b>Xdxx</b></q-btn>
-          <q-btn align="left" unelevated padding="sm" name="Mess" to="/mess" exact ><b>Mess</b></q-btn>
-          <q-btn align="left" unelevated padding="sm" name="Rainbow6" to="/rainbow6" exact ><b>Rainbow6</b></q-btn>
+          <q-btn align="left" label="Home" unelevated padding="sm" name="Home" to="/" exact class="q-ml-md" no-caps />
+          <q-btn align="left" label="Booking" unelevated padding="sm" name="Mess" to="/booking" exact no-caps />
+          <q-btn align="left" label="Rainbow6" unelevated padding="sm" name="Rainbow6" to="/rainbow6" exact no-caps />
 
           <q-space />
 
@@ -50,5 +50,7 @@ export default {
 </script>
 
 <style scoped>
-
+.q-btn {
+  font-weight: bold;
+}
 </style>
