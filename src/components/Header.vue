@@ -22,7 +22,7 @@
 
           <q-space />
 
-          <q-btn  align="left" unelevated icon="fab fa-github" @click="go_site('https://github.com/FanSolomon')"></q-btn>
+          <q-btn  align="left" unelevated icon="fab fa-github" @click="go_site('https://github.com/FanSolomon/booking-centre')"></q-btn>
         </q-toolbar>
       </q-header>
 
