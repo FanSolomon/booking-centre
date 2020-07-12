@@ -26,6 +26,11 @@ const routes = [
         component: () => import('../views/Booking.vue')
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../layouts/Login.vue')
   }
 ]
 

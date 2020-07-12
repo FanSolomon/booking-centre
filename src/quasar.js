@@ -69,7 +69,9 @@ import {
   QDate,
   QPopupProxy,
 
-  QLinearProgress
+  QLinearProgress,
+
+  QDialog
 } from 'quasar'
 
 Vue.use(Quasar, {
@@ -140,9 +142,12 @@ Vue.use(Quasar, {
     QDate,
     QPopupProxy,
 
-    QLinearProgress
+    QLinearProgress,
+
+    QDialog
   },
   directives: {
+    ClosePopup
   },
   plugins: {
   }
