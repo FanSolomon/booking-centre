@@ -14,7 +14,7 @@ axios.interceptors.response.use(response => {
     /* 业务报错的相关处理 */
     if (response.data.success === false || response.data.success === 'false') {
       if (response.data.errorCode === '0000') {
-        router.push('/login')
+        // router.push('/login')
       } else {
 
       }
