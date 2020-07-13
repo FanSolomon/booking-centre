@@ -3,7 +3,7 @@
         <div class="col-md-10" >
             <q-separator spaced inset />
             <div class="q-pa-md row justify-center">
-                <p>Copyright © 2020 FanSolomon</p>
+                <p>浙ICP备20025458号&nbsp;Copyright © 2020 FanSolomon</p>
             </div>
         </div>
 
