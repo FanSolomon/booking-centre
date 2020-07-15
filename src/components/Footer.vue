@@ -13,9 +13,10 @@
 <script>
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '~quasar-variables';
 p {
-    color: #586069;
+    color: $grayText;
     font-size: 12px;
 }
 </style>

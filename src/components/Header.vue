@@ -1,7 +1,7 @@
 <template>
     <div class="header">
-      <q-header reveal style="background: #24292e;">
-        <q-toolbar style="color: #42b983; padding: 0;">
+      <q-header reveal>
+        <q-toolbar style="padding: 0;">
           <q-btn align="left" unelevated icon="fas fa-circle-notch" to="/" exact class="q-ml-md" />
           <q-input
             :loading="loadingState"
@@ -49,8 +49,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '~quasar-variables';
 .q-btn {
   font-weight: bold;
+}
+.q-header {
+  background: $headerBlack;
+}
+.q-toolbar {
+  color: $main;
 }
 </style>

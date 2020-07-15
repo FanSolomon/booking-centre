@@ -40,6 +40,27 @@ const router = new VueRouter({
   routes
 })
 
+// 路由守卫
+router.beforeEach((to, from, next) => {
+  const isLogin = localStorage.bcToken
+  if (!needLogin(to.path)) {
+    next()
+  } else {
+    isLogin ? next() : next('/login')
+  }
+})
+
+function needLogin (path) {
+  switch (path) {
+    case '/':
+    case '/login':
+    case '/rainbow6':
+      return false
+    default:
+      return true
+  }
+}
+
 export default router
 
 // const originalPush = VueRouter.prototype.push

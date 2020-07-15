@@ -1,5 +1,5 @@
 import axios from 'axios'
-// import router from './router'
+import router from '../router'
 
 // 请求拦截
 axios.interceptors.request.use(config => {
@@ -14,7 +14,8 @@ axios.interceptors.response.use(response => {
     /* 业务报错的相关处理 */
     if (response.data.success === false || response.data.success === 'false') {
       if (response.data.errorCode === '0000') {
-        // router.push('/login')
+        localStorage.removeItem('bcToken')
+        router.push('/login')
       } else {
 
       }
@@ -29,7 +30,9 @@ axios.interceptors.response.use(response => {
         break
       case 401:
         err.message = '未授权，请重新登录'
-        // router.push('/login')
+        // 清除过期token
+        localStorage.removeItem('bcToken')
+        router.push('/login')
         break
       case 403:
         err.message = '拒绝访问'
@@ -72,4 +75,44 @@ axios.interceptors.response.use(response => {
   return Promise.reject(err)
 })
 
-export default axios
+function checkStatus (response) {
+  // loading
+  // 如果http状态码正常，则直接返回数据
+  if (response && (response.status === 200 || response.status === 304 || response.status === 400)) {
+    return response.data
+    // 如果不需要除了data之外的数据，可以直接 return response.data
+  }
+  // 异常状态下，把错误信息返回去
+  return {
+    status: -404,
+    msg: '网络异常'
+  }
+}
+
+export default {
+  data () {
+    return {}
+  },
+  post (url, data) {
+    return axios({
+      method: 'post',
+      baseURL: '/',
+      url,
+      data: data,
+      timeout: 30000,
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json; charset=UTF-8',
+        Authorization: 'Bearer ' + localStorage.getItem('bcToken')
+      }
+    }).then(
+      (response) => {
+        return checkStatus(response)
+      }
+    ).catch(
+      (err) => {
+        return err
+      }
+    )
+  }
+}

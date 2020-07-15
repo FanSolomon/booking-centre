@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import './styles/quasar.sass'
+import './styles/quasar.scss'
 import '@quasar/extras/material-icons/material-icons.css'
 import {
   Quasar,
@@ -72,7 +72,9 @@ import {
 
   QLinearProgress,
 
-  QDialog
+  QDialog,
+
+  QForm
 } from 'quasar'
 
 Vue.use(Quasar, {
@@ -146,7 +148,9 @@ Vue.use(Quasar, {
 
     QLinearProgress,
 
-    QDialog
+    QDialog,
+
+    QForm
   },
   directives: {
     ClosePopup
