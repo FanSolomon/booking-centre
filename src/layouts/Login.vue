@@ -10,22 +10,22 @@
                     <div style="margin:0 16px;">
                         <h2>Sign in to Booking</h2>
 
-                        <q-card flat bordered class="my-card">
+                        <q-card flat bordered>
                             <q-card-actions vertical align="center">
                                 <q-form @submit="submitForm" ref="userInfo">
-                                <p>Username or email address</p>
-                                <q-input outlined v-model="userInfo.username" dense class="height:30px"/>
-                                <p>Password</p>
-                                <q-input :type="isPwd ? 'password' : 'text'" outlined v-model="userInfo.password" dense>
-                                    <!-- <template v-slot:append>
-                                        <q-icon
-                                            :name="isPwd ? 'visibility_off' : 'visibility'"
-                                            class="cursor-pointer"
-                                            @click="isPwd = !isPwd"
-                                        />
-                                    </template> -->
-                                </q-input>
-                                <q-btn style="width:100%; margin:16px 0 0" padding="5px 0" unelevated color="primary" type="submit" label="Sign in" />
+                                    <p>Username or email address</p>
+                                    <q-input outlined v-model="userInfo.username" dense class="height:30px"/>
+                                    <p>Password</p>
+                                    <q-input :type="isPwd ? 'password' : 'text'" outlined v-model="userInfo.password" dense>
+                                        <!-- <template v-slot:append>
+                                            <q-icon
+                                                :name="isPwd ? 'visibility_off' : 'visibility'"
+                                                class="cursor-pointer"
+                                                @click="isPwd = !isPwd"
+                                            />
+                                        </template> -->
+                                    </q-input>
+                                    <q-btn style="width:100%; margin:16px 0 0" padding="5px 0" unelevated color="primary" type="submit" label="Sign in" />
                                 </q-form>
                             </q-card-actions>
                         </q-card>
@@ -65,8 +65,7 @@ export default {
     submitForm () {
       this.$refs.userInfo.validate().then(success => {
         if (success) {
-          console.log(this.userInfo.username)
-          this.$http.post('/api/adminserver/bssSsoApp/getOne', { username: this.userInfo.username }).then(res => {})
+          this.$http.post(this.$baseUrl + '/adminserver/bssSsoApp/getOne', { username: this.userInfo.username }).then(res => {})
         }
       })
     }
@@ -78,7 +77,7 @@ export default {
 @import '~quasar-variables';
 h2 {
     margin:0;
-    color:$blackText;
+    color: $blackText;
     font-weight: 300;
     font-size: 24px;
     letter-spacing: 0.5px;
@@ -86,9 +85,10 @@ h2 {
 p {
     font-size: 14px;
     font-weight: 100;
-    color:$blackText;
+    color: $blackText;
     margin: 0;
     align-self: start;
+    float: left;
 }
 ul {
     margin: 0;
@@ -112,6 +112,9 @@ a {
 }
 .q-input {
     width:100%
+}
+.q-form {
+    width: 100%;
 }
 .logo {
     color: $main;
