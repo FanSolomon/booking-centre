@@ -12,7 +12,6 @@ module.exports = {
   },
 
   // 它支持webPack-dev-server的所有选项
-  /*
   devServer: {
     // proxy: 'http://localhost:8080'
     proxy: {
@@ -26,7 +25,6 @@ module.exports = {
       }
     }
   },
-  */
 
   pluginOptions: {
     quasar: {
