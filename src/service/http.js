@@ -114,5 +114,27 @@ export default {
         return err
       }
     )
+  },
+  postForm (url, data) {
+    return axios({
+      method: 'post',
+      baseURL: '/',
+      url,
+      data: data,
+      timeout: 30000,
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        Authorization: 'Bearer ' + localStorage.getItem('bcToken')
+      }
+    }).then(
+      (response) => {
+        return checkStatus(response)
+      }
+    ).catch(
+      (err) => {
+        return err
+      }
+    )
   }
 }

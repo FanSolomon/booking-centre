@@ -63,9 +63,13 @@ export default {
       window.open(url)
     },
     submitForm () {
+      const formData = new FormData()
+      for (var key in this.userInfo) {
+        formData.append(key, this.userInfo[key])
+      }
       this.$refs.userInfo.validate().then(success => {
         if (success) {
-          this.$http.post(this.$baseUrl + '/adminserver/bssSsoApp/getOne', { username: this.userInfo.username }).then(res => {})
+          this.$http.postForm(this.$baseUrl + '/authentication/form', formData).then(res => {})
         }
       })
     }
