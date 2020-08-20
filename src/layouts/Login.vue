@@ -44,7 +44,7 @@
 </template>
 
 <script>
-
+import jwtDecode from 'jwt-decode'
 export default {
   name: 'Login',
   data () {
@@ -69,7 +69,26 @@ export default {
       }
       this.$refs.userInfo.validate().then(success => {
         if (success) {
-          this.$http.postForm(this.$baseUrl + '/authentication/form', formData).then(res => {})
+          this.$http.postWithoutToken(this.$baseUrl + '/auth/login', this.userInfo)
+            .then(res => {
+              console.log(res)
+              const result = res.data
+              if (res.success === true) {
+                const token = result.access_token
+                // token存储到localStorage
+                localStorage.setItem('bcToken', token)
+                const decoded = jwtDecode(token)
+                console.log(decoded)
+                this.$routes.push('/index')
+              } else {
+                if (typeof res.errorMsg === 'undefined' || res.errorMsg == null || res.errorMsg === '') {
+                  // TODO 用统一提示框显示
+                  alert('登录失败，未知错误')
+                } else {
+                  alert(res.errorMsg)
+                }
+              }
+            })
         }
       })
     }

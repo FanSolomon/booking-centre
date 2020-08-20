@@ -74,7 +74,8 @@ import {
 
   QDialog,
 
-  QForm
+  QForm,
+  Dialog
 } from 'quasar'
 
 Vue.use(Quasar, {
@@ -156,5 +157,6 @@ Vue.use(Quasar, {
     ClosePopup
   },
   plugins: {
+    Dialog
   }
 })

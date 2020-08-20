@@ -136,5 +136,26 @@ export default {
         return err
       }
     )
+  },
+  postWithoutToken (url, data) {
+    return axios({
+      method: 'post',
+      baseURL: '/',
+      url,
+      data: data,
+      timeout: 30000,
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'application/json; charset=UTF-8'
+      }
+    }).then(
+      (response) => {
+        return checkStatus(response)
+      }
+    ).catch(
+      (err) => {
+        return err
+      }
+    )
   }
 }
