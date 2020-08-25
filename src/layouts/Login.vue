@@ -51,7 +51,8 @@ export default {
     return {
       userInfo: {
         username: '',
-        password: ''
+        password: '',
+        alertMessage: ''
       },
       isPwd: true
     }
@@ -79,14 +80,21 @@ export default {
                 localStorage.setItem('bcToken', token)
                 const decoded = jwtDecode(token)
                 console.log(decoded)
-                this.$routes.push('/index')
+                // token解析后信息存储到vuex中
+                this.$store.dispatch('setAuthenticated', !(typeof decoded === 'undefined' || decoded == null || decoded === ''))
+                this.$store.dispatch('setUser', decoded)
+                this.$router.push('/')
               } else {
                 if (typeof res.errorMsg === 'undefined' || res.errorMsg == null || res.errorMsg === '') {
-                  // TODO 用统一提示框显示
-                  alert('登录失败，未知错误')
+                  this.alertMessage = '登录失败，未知错误'
                 } else {
-                  alert(res.errorMsg)
+                  this.alertMessage = res.errorMsg
                 }
+
+                this.$q.dialog({
+                  title: this.alertTitle,
+                  message: this.alertMessage
+                })
               }
             })
         }
