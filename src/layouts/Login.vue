@@ -59,6 +59,11 @@ export default {
   },
   components: {
   },
+  mounted: function () {
+    if (localStorage.bcToken) {
+      this.$router.push('/')
+    }
+  },
   methods: {
     go_site (url) {
       window.open(url)

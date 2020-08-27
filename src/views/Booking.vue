@@ -23,6 +23,9 @@ export default {
   },
   methods: {
     test () {
+      // 一次发三条 用于测试promise函数
+      // this.$http.post(this.$baseUrl + '/bcUser/test', '').then(res => {})
+      // this.$http.post(this.$baseUrl + '/bcUser/test', '').then(res => {})
       this.$http.post(this.$baseUrl + '/bcUser/test', '')
         .then(res => {
           const result = res.data
