@@ -17,6 +17,7 @@ axios.interceptors.response.use(response => {
     if (response.data.success === false || response.data.success === 'false') {
       if (response.data.code === '0000' || response.data.code === '0008') {
         localStorage.removeItem('bcToken')
+        localStorage.removeItem('user')
         router.push('/login')
       } else {
 
@@ -28,6 +29,7 @@ axios.interceptors.response.use(response => {
   if (err && err.response) {
     if (err.response.data.code === '0000' || err.response.data.code === '0008') {
       localStorage.removeItem('bcToken')
+      localStorage.removeItem('user')
       router.push('/login')
     } else {
 
@@ -40,6 +42,7 @@ axios.interceptors.response.use(response => {
         err.message = '未授权，请重新登录'
         // 清除过期token
         localStorage.removeItem('bcToken')
+        localStorage.removeItem('user')
         router.push('/login')
         break
       case 403:
@@ -116,10 +119,12 @@ function refreshTokenRequst () {
         console.log(res.errorMsg)
       }
       localStorage.removeItem('bcToken')
+      localStorage.removeItem('user')
       router.push('/login')
     }
   }).catch((err) => {
     localStorage.removeItem('bcToken')
+    localStorage.removeItem('user')
     router.push('/login')
     console.log(err)
   }).finally(() => {

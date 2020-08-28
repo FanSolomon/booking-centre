@@ -20,8 +20,10 @@ const mutations = {
     else state.isAuthenticated = false
   },
   [types.SET_USER] (state, user) {
-    if (user) state.user = user
-    else state.user = {}
+    if (user) {
+      state.user = user
+      localStorage.setItem('user', JSON.stringify(user))
+    } else state.user = {}
   }
 }
 const actions = {
