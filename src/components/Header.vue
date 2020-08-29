@@ -78,7 +78,11 @@ export default {
   },
   computed: {
     user () {
-      return JSON.parse(localStorage.user)
+      if (localStorage.user) {
+        return JSON.parse(localStorage.user)
+      } else {
+        return ''
+      }
     }
   },
   methods: {

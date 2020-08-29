@@ -2,6 +2,7 @@ import axios from 'axios'
 import router from '../router'
 import jwtDecode from 'jwt-decode'
 import http from './http'
+import store from '../store/index'
 
 // 请求拦截
 axios.interceptors.request.use(config => {
@@ -111,6 +112,9 @@ function refreshTokenRequst () {
       localStorage.setItem('bcToken', token)
       const decoded = jwtDecode(token)
       console.log(decoded)
+      // token解析后信息存储到vuex中
+      store.dispatch('setAuthenticated', !(typeof decoded === 'undefined' || decoded == null || decoded === ''))
+      store.dispatch('setUser', decoded)
       onAccessTokenFetched()
     } else {
       if (typeof res.errorMsg === 'undefined' || res.errorMsg == null || res.errorMsg === '') {
